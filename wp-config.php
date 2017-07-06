@@ -5,7 +5,7 @@
  * Simple parser for DATABASE_URL in PHP 
  */
 if (getenv('DATABASE_URL')) {
-  $url = parse_url(env("DATABASE_URL"));
+  $url = parse_url(getenv("DATABASE_URL"));
 
   putenv('DB_CONNECTION=' . ($url['scheme'] == 'postgres' ? 'pgsql' : $url['scheme']));
   putenv("DB_HOST={$url['host']}");
