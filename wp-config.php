@@ -74,6 +74,12 @@ define('NONCE_SALT',       'd,lJ(-`i<1Kb&red<Rj1E]]HAr.ozkf9|#&BL;j#x,Y#/F[uy}2e
  * a unique prefix. Only numbers, letters, and underscores please!
  */
 $table_prefix  = 'wp_';
+
+/**
+ * For updates: set direct access to filesystem 
+ */
+define('FS_METHOD', 'direct');
+
 /**
  * For developers: WordPress debugging mode.
  *
