@@ -3,6 +3,9 @@
 /* 
  * Simple parser for DATABASE_URL in PHP 
  */
+if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
+	   $_SERVER['HTTPS']='on';
+
 if (getenv('DATABASE_URL')) {
   $url = parse_url(getenv("DATABASE_URL"));
 
