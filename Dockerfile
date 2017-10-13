@@ -3,7 +3,7 @@ MAINTAINER Glenn Y. Rolland <glenn.rolland@datatransition.net>
 
 RUN curl -L \
 	https://github.com/vrana/adminer/releases/download/v4.3.1/adminer-4.3.1-mysql-en.php \
-	-o adminer.php
+	-o /var/www/html/adminer.php
 
 RUN curl -L \
 	https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
@@ -14,5 +14,6 @@ RUN apt-get update && \
     apt-get install less && \
     apt-get autoremove
 
+ADD php-uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 ADD wp-config.php /var/www/html/wp-config.php
 
