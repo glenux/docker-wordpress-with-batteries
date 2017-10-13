@@ -1,6 +1,8 @@
 FROM wordpress:4.8.0-php7.1-apache
 MAINTAINER Glenn Y. Rolland <glenn.rolland@datatransition.net>
 
+VOLUME /var/www/html
+
 RUN curl -L \
 	https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
 	-o /usr/local/bin/wp && \
@@ -16,6 +18,4 @@ RUN apt-get update && \
 
 ADD php-uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 ADD wp-config.php /var/www/html/wp-config.php
-
-VOLUME /var/www/html
 
