@@ -8,9 +8,11 @@ RUN curl -L \
 	-o /usr/local/bin/wp && \
 	chmod +x /usr/local/bin/wp
 
-RUN curl -L \
+RUN mkdir /usr/local/adminer && \
+	curl -L \
 	https://github.com/vrana/adminer/releases/download/v4.3.1/adminer-4.3.1-mysql-en.php \
-	-o /var/www/html/adminer.php
+	-o /usr/local/adminer/adminer.php && \
+	ln -s /usr/local/adminer/adminer.php adminer.php
 
 RUN apt-get update && \
     apt-get install less && \
