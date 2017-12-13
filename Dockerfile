@@ -12,7 +12,8 @@ RUN mkdir /usr/local/adminer && \
 	curl -L \
 	https://github.com/vrana/adminer/releases/download/v4.3.1/adminer-4.3.1-mysql-en.php \
 	-o /usr/local/adminer/adminer.php && \
-	ln -s /usr/local/adminer/adminer.php adminer.php
+	ln -s /usr/local/adminer/adminer.php adminer.php && \
+	ln -s /usr/local/adminer/adminer.php /usr/src/wordpress/adminer.php
 
 RUN apt-get update && \
     apt-get install less && \
