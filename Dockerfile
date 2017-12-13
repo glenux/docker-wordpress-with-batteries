@@ -16,7 +16,7 @@ RUN mkdir /usr/local/adminer && \
 	ln -s /usr/local/adminer/adminer.php /usr/src/wordpress/adminer.php
 
 RUN apt-get update && \
-    apt-get install less && \
+    apt-get install less nano && \
     apt-get autoremove
 
 ADD php-uploads.ini /usr/local/etc/php/conf.d/uploads.ini
