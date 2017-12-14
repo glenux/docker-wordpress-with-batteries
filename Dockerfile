@@ -20,6 +20,7 @@ RUN apt-get update && \
     apt-get autoremove
 
 ADD php-uploads.ini /usr/local/etc/php/conf.d/uploads.ini
-ADD wp-config.php /var/www/html/wp-config.php
+ADD wp-config.php /usr/src/wordpress/wp-config.php
+ADD .htaccess /usr/src/wordpress/.htaccess
 
 EXPOSE 80
