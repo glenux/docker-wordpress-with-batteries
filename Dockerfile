@@ -18,6 +18,7 @@ RUN apt-get update && \
     apt-get install less && \
     apt-get autoremove
 
-ADD php-uploads.ini /usr/local/etc/php/conf.d/uploads.ini
+ADD php-uploads.ini /usr/local/etc/php/conf.d/glenux-uploads.ini
+ADD php-performance.ini /usr/local/etc/php/conf.d/glenux-performance.ini
 ADD wp-config.php /var/www/html/wp-config.php
 
