@@ -1,18 +1,26 @@
 FROM wordpress:4.9.8-php7.1-apache
 MAINTAINER Glenn Y. Rolland <glenn.rolland@datatransition.net>
 
-RUN curl -L \
-	https://github.com/vrana/adminer/releases/download/v4.3.1/adminer-4.3.1-mysql-en.php \
-	-o adminer.php
+VOLUME /var/www/html
 
 RUN curl -L \
 	https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
 	-o /usr/local/bin/wp && \
 	chmod +x /usr/local/bin/wp
 
+RUN mkdir /usr/local/adminer && \
+	curl -L \
+	https://github.com/vrana/adminer/releases/download/v4.3.1/adminer-4.3.1-mysql-en.php \
+	-o /usr/local/adminer/adminer.php && \
+	ln -s /usr/local/adminer/adminer.php adminer.php && \
+	ln -s /usr/local/adminer/adminer.php /usr/src/wordpress/adminer.php
+
 RUN apt-get update && \
-    apt-get install less && \
+    apt-get install less nano && \
     apt-get autoremove
 
-ADD wp-config.php /var/www/html/wp-config.php
+ADD php-uploads.ini /usr/local/etc/php/conf.d/uploads.ini
+ADD wp-config.php /usr/src/wordpress/wp-config.php
+ADD .htaccess /usr/src/wordpress/.htaccess
 
+EXPOSE 80
