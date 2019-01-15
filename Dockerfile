@@ -1,7 +1,9 @@
-FROM wordpress:4.8.0-php7.1-apache
+FROM wordpress:5.0.2-php7.1-apache
 MAINTAINER Glenn Y. Rolland <glenn.rolland@datatransition.net>
 
 VOLUME /var/www/html
+
+RUN sed -i 's/set -e/set -e\nchown -R www-data: \/var\/www\/html\/wp-content\/uploads/g' /entrypoint.sh
 
 RUN curl -L \
 	https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
