@@ -14,13 +14,17 @@ RUN mkdir /usr/local/adminer && \
 	curl -L \
 	https://github.com/vrana/adminer/releases/download/v4.3.1/adminer-4.3.1-mysql-en.php \
 	-o /usr/local/adminer/adminer.php && \
-	ln -s /usr/local/adminer/adminer.php adminer.php
+	ln -s /usr/local/adminer/adminer.php adminer.php && \
+	ln -s /usr/local/adminer/adminer.php /usr/src/wordpress/adminer.php
 
 RUN apt-get update && \
-    apt-get install less && \
+    apt-get install less nano && \
     apt-get autoremove
 
 ADD php-uploads.ini /usr/local/etc/php/conf.d/glenux-uploads.ini
 ADD php-performance.ini /usr/local/etc/php/conf.d/glenux-performance.ini
 ADD wp-config.php /usr/src/wordpress/wp-config.php
+# ADD wp-config.php /var/www/html/wp-config.php
+ADD .htaccess /usr/src/wordpress/.htaccess
 
+EXPOSE 80
