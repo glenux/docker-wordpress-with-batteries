@@ -3,7 +3,9 @@ MAINTAINER Glenn Y. Rolland <glenn.rolland@datatransition.net>
 
 VOLUME /var/www/html
 
-RUN sed -i 's/set -e/set -e\nchown -R www-data: \/var\/www\/html\/wp-content\/uploads/g' /entrypoint.sh
+RUN sed -i \
+    -e 's|exec|chown -R www-data: /var/www/html/wp-content/uploads\nexec|g' \
+    /usr/local/bin/docker-entrypoint.sh
 
 RUN curl -L \
 	https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
