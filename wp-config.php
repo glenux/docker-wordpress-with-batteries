@@ -97,6 +97,11 @@ define('FS_METHOD', 'direct');
  */
 define('WP_DEBUG', false);
 define( 'WP_CONTENT_URL', '/wp-content');
+if (getenv('APP_URL')) {
+  $url = parse_url(getenv("APP_URL"));
+  define('WP_HOME',$url);
+  define('WP_SITEURL', $url);
+}
 
 /* That's all, stop editing! Happy blogging. */
 /** Absolute path to the WordPress directory. */
