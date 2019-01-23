@@ -1,4 +1,4 @@
-FROM wordpress:5.0.2-php7.1-apache
+FROM wordpress:5.0.3-php7.1-apache
 MAINTAINER Glenn Y. Rolland <glenn.rolland@datatransition.net>
 
 VOLUME /var/www/html
