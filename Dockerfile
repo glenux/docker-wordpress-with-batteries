@@ -1,4 +1,4 @@
-FROM wordpress:5.0.3-php7.1-apache
+FROM wordpress:5.6-php7.3-apache
 MAINTAINER Glenn Y. Rolland <glenn.rolland@datatransition.net>
 
 # 
@@ -25,10 +25,15 @@ RUN apt-get update && \
     apt-get install less nano && \
     apt-get autoremove
 
-ADD php-uploads.ini /usr/local/etc/php/conf.d/glenux-uploads.ini
-ADD php-performance.ini /usr/local/etc/php/conf.d/glenux-performance.ini
-ADD wp-config.php /usr/src/wordpress/wp-config.php
+
+
+# COPY ou ADD 
+
+COPY php-uploads.ini /usr/local/etc/php/conf.d/glenux-uploads.ini
+COPY php-performance.ini /usr/local/etc/php/conf.d/glenux-performance.ini
+COPY wp-config.php /usr/src/wordpress/wp-config.php
 # ADD wp-config.php /var/www/html/wp-config.php
-ADD .htaccess /usr/src/wordpress/.htaccess
+COPY .htaccess /usr/src/wordpress/.htaccess
+
 
 EXPOSE 80
